@@ -1,8 +1,13 @@
-const taim = function(){
-if (timer >=0) { alert ("Вы победили в конкурсе!», используя функцию");}
-const timer = document.getElementById("timer");
-timer.textContent -=1;
-};
-
-
-setInterval(taim, 10);
+const counter = () => { 
+    const count = document.getElementById("timer"); 
+ 
+    if (count.textContent == 0) { 
+        return clearInterval(alert ("Вы победили в конкурсе!"));
+    }; 
+ 
+    count.textContent -= 1; 
+} 
+ 
+const timer = setInterval(() => { 
+    counter(); 
+}, 1000);
