@@ -43,23 +43,17 @@ document.addEventListener('DOMContentLoaded', () => {
       const inCart = Array.from(cart.children);
 
       //проверка присутствия в коризне товара
-      let isInCard = false;
+      const productInCart = inCart.find(cartEl => id == cartEl.dataset.id);
 
-      inCart.find(cartEl => {
-        if (id == cartEl.dataset.id) {
-          isInCard = true;
+      if (productInCart) {
+        const cloneProduct = productInCart.cloneNode(true);
+        const cloneCount = cloneProduct.lastElementChild;
+        cloneCount.innerText = count + +cloneCount.innerText;
 
-          const cloneProduct = cartEl.cloneNode(true);
-          const cloneCount = cloneProduct.lastElementChild;
-          cloneCount.innerText = count + +cloneCount.innerText;
-
-          cartEl.replaceWith(cloneProduct);
-          return false;
-        }
-      })
-
-      if (!isInCard) cart.appendChild(cartProduct);
-
+        productInCart.replaceWith(cloneProduct);
+      } else {
+        cart.appendChild(cartProduct);
+      }
     })
   })
 })

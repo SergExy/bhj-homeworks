@@ -5,6 +5,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
   form.addEventListener('submit', (e) => {
     e.preventDefault();
+    const textToAdd = text.value.trim();
+
+    if (!textToAdd) {
+      form.reset();
+      return false;
+    }
 
     const parent = document.createElement('div');
     const title = document.createElement('div');
